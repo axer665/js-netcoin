@@ -56,7 +56,7 @@ myMoneyManager.conversionMoneyCallback = (data) => {
         // Получаем текущего пользователя
         ApiConnector.current((userConnect) => {
             // Если данные получили и количество выбранной валюты позволяет сделать списание, то делаем его
-            if (userConnect.success === true && userConnect.data.balance[data.fromCurrency] > data.fromAmount) {
+            if (userConnect.success === true && userConnect?.data?.balance[data.fromCurrency] > data.fromAmount) {
                 ApiConnector.convertMoney(data, (user) => {
                     ProfileWidget.showProfile(user.data); // обновляем профиль
                     myMoneyManager.setMessage(true, "Вы конвертировали " + data.fromAmount + " из " + data.fromCurrency + " в " + data.targetCurrency + " по текущему курсу");
@@ -80,7 +80,7 @@ myMoneyManager.sendMoneyCallback = (data) => {
         // Получаем данные текущего пользователя
         ApiConnector.current((userConnect) => {
             // Если данные получили и количество выбранной валюты позволяет сделать списание, то делаем его
-            if (userConnect.success === true && userConnect.data.balance[data.currency] >= data.amount) {
+            if (userConnect.success === true && userConnect?.data?.balance[data.currency] >= data.amount) {
                 ApiConnector.transferMoney(data, (user) => {
                     if (favoritesObjectList.length > 0) {
                         ProfileWidget.showProfile(user.data); // обновляем профиль
