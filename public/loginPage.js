@@ -1,3 +1,5 @@
+"use strict";
+
 // инициируем приняте данных из формы
 const myUserForm = new UserForm();
 
